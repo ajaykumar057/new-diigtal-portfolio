@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Kumar | Portfolio</title>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2a2a4a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5a5a7c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7a7ac8;
+        }
+
+        /* Mouse effect styling */
+        #mouse-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            transition: background 0.3s ease-out;
+        }
+
+        /* Fade-in effect for sections */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link.active {
+            color: #58a6ff;
+            border-bottom: 2px solid #58a6ff;
+            padding-bottom: 4px;
+        }
+
+        /* Custom glow effect on cards */
+        .card-glow {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card-glow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
+        }
+
+        /* Keyframe animation for hero text */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInDown {
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        /* Typing effect cursor */
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to {
+                visibility: hidden;
+            }
+            50% {
+                visibility: visible;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#0d1117]">
+    <!-- Background Mouse Effect -->
+    <div id="mouse-effect"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0d1117]/80 backdrop-blur-sm shadow-xl">
+        <div class="container mx-auto px-6 py-4 flex justify-center space-x-6 sm:space-x-10">
+            <a href="#home" class="nav-link text-lg font-medium hover:text-[#58a6ff] transition-colors duration-300">Home</a>
+            <a href="#about" class="nav-link text-lg font-medium hover:text-[#58a6ff] transition-colors duration-300">About</a>
+            <a href="#projects" class="nav-link text-lg font-medium hover:text-[#58a6ff] transition-colors duration-300">Projects</a>
+            <a href="#skills" class="nav-link text-lg font-medium hover:text-[#58a6ff] transition-colors duration-300">Skills</a>
+            <a href="#contact" class="nav-link text-lg font-medium hover:text-[#58a6ff] transition-colors duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center p-6 sm:p-12 space-y-6">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-[#58a6ff] shadow-lg mb-6 animate-fadeInDown" style="animation-delay: 0s;">
+                <!-- Please replace the src with your actual profile picture URL -->
+                <img src="assests\my-photo.jpg" alt="Ajay Kumar" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white leading-tight animate-fadeInDown" style="animation-delay: 0.2s;">Ajay Kumar</h1>
+            <!-- The following p tag will be used for the typing effect -->
+            <p id="job-title" class="text-xl sm:text-2xl md:text-3xl font-light text-[#8b949e] tracking-wide mt-2"></p>
+            <!-- The following p tag will be used for the typing effect -->
+            <p id="quote" class="text-sm sm:text-lg max-w-2xl text-center text-[#8b949e] mt-4"></p>
+            <div class="grid grid-cols-3 gap-8 mt-8 animate-fadeInDown" style="animation-delay: 0.8s;">
+                <a href="https://github.com/ajaykumar057" target="_blank" class="text-[#8b949e] hover:text-[#58a6ff] transition-colors duration-300">
+                    <svg class="h-10 w-10 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.468-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.607.804.568 4.768-1.586 8.205-6.084 8.205-11.385 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="block text-sm mt-2">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ajay-kumar-166b9824b/" target="_blank" class="text-[#8b949e] hover:text-[#58a6ff] transition-colors duration-300">
+                    <svg class="h-10 w-10 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.769 0-.969.784-1.75 1.75-1.75s1.75.781 1.75 1.75c0 .979-.783 1.769-1.75 1.769zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    <span class="block text-sm mt-2">LinkedIn</span>
+                </a>
+                <a href="mailto:ajayk780191@gmail.com" class="text-[#8b949e] hover:text-[#58a6ff] transition-colors duration-300">
+                    <svg class="h-10 w-10 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-6.623 5.688v-11.457l6.623 5.769zm1.328-1.077l4.024 3.739 4.024-3.739 5.924 6.425v-11.517l-14.972 1.348z" style="stroke-width:1"/>
+                    </svg>
+                    <span class="block text-sm mt-2">Email</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">About Me</h2>
+            <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl transition-transform duration-300 transform hover:scale-[1.01]">
+                <p class="text-lg text-[#c9d1d9] leading-relaxed">
+                    I am a B.Tech CSE student specializing in Artificial Intelligence and Machine Learning with experience in building real-world applications like career chatbots, anomaly detection systems, and mental wellness platforms. I have worked on full-stack AI projects and internship-based data science tasks to achieve both academic and industry-ready outcomes. I want to build a career as an AI Developer or ML Engineer to create impact through intelligent and accessible digital solutions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Experience</h2>
+            <div class="space-y-8">
+                <!-- Experience Card -->
+                <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl card-glow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <h3 class="text-2xl font-semibold text-[#58a6ff]">Data Science Intern</h3>
+                        <p class="text-md text-[#c9d1d9]">Prodigy Infotech (Remote) | 20XX - 20XX</p>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-md text-[#c9d1d9]">
+                        <li>Worked on real-world data science tasks using Python, NLP, and visualization tools.</li>
+                        <li>Conducted EDA, cleaned large datasets, built ML models, and visualized key insights.</li>
+                        <li>Documented projects on GitHub, published write-ups on LinkedIn, and explored additional tools like WordCloud and Gradio.</li>
+                        <li>Completed 5 end-to-end projects that improved skills in data storytelling, classification, and unsupervised learning.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- MindEase Card -->
+                <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl card-glow">
+                    <h3 class="text-2xl font-semibold text-[#58a6ff] mb-2">MindEase – Mental Health Companion</h3>
+                    <p class="text-md text-[#c9d1d9] mb-4">A journaling and mood-tracking platform built with the MERN stack and Groq's LLaMA 3 API. Integrated AI-powered journaling and mood analytics for mental wellness.</p>
+                    <p class="font-medium text-[#8b949e]">Technologies: <span class="font-normal">React.js, Node.js, MongoDB, Tailwind CSS, Recharts, Groq API</span></p>
+                </div>
+                <!-- CareerPulse Card -->
+                <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl card-glow">
+                    <h3 class="text-2xl font-semibold text-[#58a6ff] mb-2">CareerPulse – Smart Career Chatbot</h3>
+                    <p class="text-md text-[#c9d1d9] mb-4">A Python-based chatbot using the Groq API that recommends career paths based on a user's resume, generating and emailing a detailed report.</p>
+                    <p class="font-medium text-[#8b949e]">Technologies: <span class="font-normal">Python, Groq API, docx2txt, FPDF, SMTP, Gradio</span></p>
+                </div>
+                <!-- Capstone Card -->
+                <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl card-glow">
+                    <h3 class="text-2xl font-semibold text-[#58a6ff] mb-2">Capstone – Market Risk Assessment App</h3>
+                    <p class="text-md text-[#c9d1d9] mb-4">A full-stack MERN application for finance simulations with a scalable microservices architecture and an automated CI/CD deployment pipeline.</p>
+                    <p class="font-medium text-[#8b949e]">Technologies: <span class="font-normal">React.js, Node.js, MongoDB, Jenkins, Docker</span></p>
+                </div>
+                <!-- Smart Grid Card -->
+                <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl card-glow">
+                    <h3 class="text-2xl font-semibold text-[#58a6ff] mb-2">Smart Grid Anomaly Detection</h3>
+                    <p class="text-md text-[#c9d1d9] mb-4">A research project using unsupervised machine learning models (Isolation Forest, One-Class SVM, LOF) to detect anomalies in synthetic smart grid data.</p>
+                    <p class="font-medium text-[#8b949e]">Technologies: <span class="font-normal">Scikit-learn, Isolation Forest, One-Class SVM, LOF</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Skills</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">Programming</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">Web Development</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>React.js</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>MongoDB</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">Machine Learning</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>Scikit-learn</li>
+                        <li>NLP</li>
+                        <li>OpenCV</li>
+                        <li>Clustering</li>
+                    </ul>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">Tools</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>GitHub</li>
+                        <li>Jupyter</li>
+                        <li>Google Colab</li>
+                        <li>Jenkins</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">APIs</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>Groq (LLaMA 3)</li>
+                        <li>Hugging Face</li>
+                        <li>Spotify API</li>
+                    </ul>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h4 class="text-xl font-semibold text-[#58a6ff] mb-4">Data Visualization</h4>
+                    <ul class="list-disc list-inside text-md text-[#c9d1d9]">
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Certifications</h2>
+            <div class="space-y-4">
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <p class="text-lg font-semibold text-[#c9d1d9]">Complete AI & ML, Data Science Bootcamp</p>
+                    <p class="text-md text-[#8b949e]">Udemy, 2024</p>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <p class="text-lg font-semibold text-[#c9d1d9]">Image Recognition using Machine Learning</p>
+                    <p class="text-md text-[#8b949e]">Simplilearn, 2023</p>
+                </div>
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <p class="text-lg font-semibold text-[#c9d1d9]">Data Science Essentials</p>
+                    <p class="text-md text-[#8b949e]">1Stop, 2023</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Education</h2>
+            <div class="space-y-4">
+                <div class="bg-[#161b22] p-6 rounded-2xl shadow-xl card-glow">
+                    <h3 class="text-lg font-semibold text-[#58a6ff]">B.Tech – Computer Science & Engineering (AI & ML)</h3>
+                    <p class="text-md text-[#c9d1d9]">NIIT University | 2022-2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container mx-auto p-6 sm:p-12 my-20 fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-10">Contact</h2>
+            <div class="bg-[#161b22] p-8 rounded-2xl shadow-xl max-w-lg mx-auto card-glow">
+                <p class="text-lg text-[#c9d1d9] text-center mb-6">Feel free to reach out to me via this form.</p>
+                <!-- NOTE: This form is for display only. A backend is required to process the submission. -->
+                <form action="https://formspree.io/f/movlbeln" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-md font-medium text-[#c9d1d9]">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm focus:ring-[#58a6ff] focus:border-[#58a6ff] text-[#c9d1d9] transition-colors" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-md font-medium text-[#c9d1d9]">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm focus:ring-[#58a6ff] focus:border-[#58a6ff] text-[#c9d1d9] transition-colors" placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-md font-medium text-[#c9d1d9]">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm focus:ring-[#58a6ff] focus:border-[#58a6ff] text-[#c9d1d9] transition-colors" placeholder="Your Message"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-bold text-white bg-[#58a6ff] hover:bg-[#4695e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#58a6ff] transition-colors duration-300">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center text-sm text-[#8b949e] p-6 mt-10">
+        &copy; 2024 Ajay Kumar. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Background Mouse Effect
+        const mouseEffect = document.getElementById('mouse-effect');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            mouseEffect.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(88, 166, 255, 0.1), transparent 30%)`;
+        });
+
+        // Scroll-based fade-in effect
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        fadeInSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Nav link active state
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Typing Effect Script
+        document.addEventListener('DOMContentLoaded', function() {
+            const jobTitleElement = document.getElementById('job-title');
+            const quoteElement = document.getElementById('quote');
+            const jobTitleText = "AI Developer & ML Engineer";
+            const quoteText = "Crafting intelligent solutions with a passion for innovation and impact.";
+            let i = 0;
+            let j = 0;
+            const speed = 50; // Typing speed in milliseconds
+
+            function typeWriter(element, text, callback) {
+                element.classList.add('typing-effect');
+                let charIndex = 0;
+                function type() {
+                    if (charIndex < text.length) {
+                        element.textContent += text.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(type, speed);
+                    } else {
+                        element.classList.remove('typing-effect');
+                        if (callback) {
+                            setTimeout(callback, 1000); // Wait 1 second before starting the next effect
+                        }
+                    }
+                }
+                type();
+            }
+
+            // Start the typing effects one after the other
+            typeWriter(jobTitleElement, jobTitleText, () => {
+                typeWriter(quoteElement, quoteText);
+            });
+        });
+    </script>
+</body>
+</html>
